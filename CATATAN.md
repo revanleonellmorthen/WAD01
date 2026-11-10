@@ -1,14 +1,40 @@
 # Belajar Tailwind dari CSS yang sudah ada
 
-File: `index.html` (versi Tailwind). File asli tidak diubah, ada di `../index.html` + `../style.css`.
+Status: Tailwind v4 terpasang lokal (CLI)
+File asli (HTML + CSS murni)
 
-## Cara pakai
+## Struktur folder
 
-Buka `index.html` di browser. Tidak ada install, tidak ada build. Tailwind v4 CDN
-membaca class di HTML lalu membuat CSS-nya saat halaman dibuka.
+```
+tailwind/
+├── index.html        <- halaman, di root
+├── style.css         <- HASIL BUILD, jangan diedit manual
+├── src/
+│   └── input.css     <- sumber Tailwind (1 baris @import)
+├── package.json      <- script dev/build
+├── .gitignore        <- node_modules/
+└── node_modules/     <- jangan di-commit
+```
 
-CDN hanya untuk belajar. Untuk project nyata pakai build step (`npm i tailwindcss`
-+ `npx @tailwindcss/cli`) supaya CSS di-generate sekali, bukan tiap reload.
+Aturan yang paling sering bikin bingung:
+
+| File | Fungsi | Di-link ke HTML? |
+|---|---|---|
+| `src/input.css` | bahan mentah | **tidak** |
+| `style.css` | hasil build | **ya** |
+
+`index.html` dan `style.css` harus satu folder. Kalau HTML dipindah ke
+subfolder, path link ikut berubah (`../style.css`).
+
+## Perintah
+
+```powershell
+npm run dev     # watch: edit HTML -> simpan -> refresh browser
+npm run build   # sekali jalan + minify, untuk production
+```
+
+`npm run dev` menggantung di terminal. Itu benar, sedang memantau file.
+Stop dengan `Ctrl+C`.
 
 ## Konsep inti
 
@@ -23,6 +49,8 @@ CDN hanya untuk belajar. Untuk project nyata pakai build step (`npm i tailwindcs
    `max-w-[1000px]`, `text-[#1c2333]`, `max-w-[60ch]`.
 5. **Variant** — awalan untuk kondisi: `hover:text-blue-600`,
    `md:grid-cols-3`, `focus:ring-2`.
+6. **Tidak ada `tailwind.config.js` di v4.** Kustomisasi lewat `@theme` di
+   `src/input.css`. Tutorial yang menyuruh bikin config file itu v3.
 
 ## Peta CSS lama -> Tailwind
 
@@ -68,12 +96,3 @@ diberi `text-slate-500` sendiri. Konsekuensinya: class jadi panjang dan berulang
 10 tempat, jangan copy 10x. Pilih satu:
 - buat komponen (React/Vue/partial HTML), atau
 - `@apply` di file CSS sendiri.
-
-## Latihan (urut, kerjakan satu-satu)
-
-1. Ganti `text-3xl` jadi `text-5xl` di h1. Lihat efeknya.
-2. Tambah `hover:bg-gray-50` di `<article>` card.
-3. Bikin grid jadi responsif: `grid-cols-1 md:grid-cols-3`.
-4. Ganti `max-w-[1000px]` jadi `max-w-4xl`. Bandingkan lebarnya.
-5. Tambah `shadow-sm` di card, lihat bedanya dengan border saja.
-6. Buka DevTools, cek CSS yang di-generate Tailwind. Cari `.p-5`.
