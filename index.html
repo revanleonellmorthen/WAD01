@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rvn Belajar — Tailwind</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="font-sans leading-relaxed text-[#1c2333]">
+
+  <!-- flex + items-center + justify-between = logo kiri, menu kanan -->
+  <header class="flex items-center justify-between border-b border-gray-300 px-10 py-4">
+    <a class="text-lg font-bold" href="#">Rvn Belajar</a>
+    <nav>
+      <ul class="flex gap-6">
+        <li><a class="hover:text-blue-600" href="#pengenalan">Pengenalan</a></li>
+        <li><a class="hover:text-blue-600" href="#fitur">Fitur</a></li>
+        <li><a class="hover:text-blue-600" href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- max-w + mx-auto = konten di tengah, lebar maksimal -->
+    <section id="pengenalan" class="mx-auto max-w-[1000px] px-10 py-16">
+      <h1 class="mb-3 text-3xl font-bold">Belajar HTML &amp; CSS dari nol</h1>
+      <p class="max-w-[60ch] text-slate-500">
+        Rvn Belajar adalah komunitas untuk pemula yang ingin membuat halaman
+        web sendiri. Materi dimulai dari struktur semantik sampai layout
+        Flexbox dan Grid.
+      </p>
+    </section>
+
+    <!-- Background selebar layar, isi tetap dibatasi lewat div pembungkus -->
+    <section id="fitur" class="bg-[#f5f7fb] px-10 py-16">
+      <div class="mx-auto max-w-[1000px]">
+        <h2 class="mb-6 text-2xl font-bold">Apa yang dipelajari</h2>
+
+        <div class="grid grid-cols-3 gap-5">
+          <article class="rounded-lg border border-gray-300 bg-white p-5">
+            <h3 class="mb-2 font-semibold">HTML Semantik</h3>
+            <p class="text-slate-500">Memakai tag header, main, section, dan footer agar struktur jelas.</p>
+          </article>
+          <article class="rounded-lg border border-gray-300 bg-white p-5">
+            <h3 class="mb-2 font-semibold">Layout Flexbox</h3>
+            <p class="text-slate-500">Menyusun elemen sejajar dengan display: flex dan justify-content.</p>
+          </article>
+          <article class="rounded-lg border border-gray-300 bg-white p-5">
+            <h3 class="mb-2 font-semibold">Styling CSS</h3>
+            <p class="text-slate-500">Mengatur warna, jarak, dan ukuran agar halaman nyaman dibaca.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- flex + justify-between + gap = tiga kolom sejajar -->
+  <footer id="kontak" class="flex justify-between gap-8 bg-[#1c2333] px-10 py-8 text-[#d5dae5]">
+    <div class="flex-1">
+      <a class="font-bold text-white" href="#">Rvn Belajar</a>
+    </div>
+    <div class="flex-1">
+      <p>Dibuat hanya dengan HTML dan CSS.</p>
+    </div>
+    <div class="flex-1">
+      <p>halo@rvnbelajar.id</p>
+      <p>Jl. kebebasan No. 2, Belitung</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
